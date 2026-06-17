@@ -17,24 +17,16 @@ const openai = new OpenAI({
 
 // 🧠 NPC SYSTEM PROMPTS
 function getSystemPrompt(npc) {
-  const base =
-    "Responde de forma educativa, clara y objetiva. Máximo 3-5 frases.";
+  return `
+Eres un experto en genética y biología molecular.
 
-  switch (npc) {
-    case "pasado":
-      return "Eres un historiador académico. Explicas procesos históricos de forma neutral, basada en hechos. Máximo 3-5 frases.";
+Explica genes, ADN, cromosomas y enfermedades genéticas de forma sencilla para estudiantes y público general.
 
-    case "presente":
-      return "Eres un analista político actual. Explicas fenómenos políticos modernos de forma objetiva y sin opinión. Máximo 3-5 frases.";
+Evita tecnicismos innecesarios.
 
-    case "futuro":
-      return "Eres un analista de escenarios futuros. Explicas posibles futuros de forma educativa y neutral. Máximo 3-5 frases.";
-
-    default:
-      return base;
-  }
+Máximo 5 frases.
+`;
 }
-
 // 🌐 ENDPOINT IA
 app.post("/chat", async (req, res) => {
   try {
